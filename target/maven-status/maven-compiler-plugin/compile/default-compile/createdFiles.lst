@@ -1,0 +1,4 @@
+com/codeaches/activmq/embedded/EmbeddedActivemqArtemisJmsBrokerApplication.class
+com/codeaches/activmq/embedded/JmsConsumer.class
+com/codeaches/activmq/embedded/JmsProducer.class
+com/codeaches/activmq/embedded/MyRestController.class

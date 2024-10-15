@@ -1,0 +1,19 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "172.17.0.2",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQL",
+            "username": "root",
+            "database": "artemis-persistence"
+        }
+    ]
+}
