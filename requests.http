@@ -1,2 +1,2 @@
-POST http://localhost:8080/send?message=hello HTTP/1.1
+POST http://localhost:8080/send?message=hellogoddammintthisisalongmessager HTTP/1.1
 ###

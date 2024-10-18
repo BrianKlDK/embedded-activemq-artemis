@@ -1,0 +1,67 @@
+@startuml
+
+package TLresp as "Termination Layer Response (Spring Boot)" {
+    interface i1 as "response interface"
+    component rc1 as "REST Controller"
+    queue q1 as "Embedded Response Queue (Artemis)"
+    component l1 as "Queue listener / REST Client"
+    note left of l1
+        Order of action important.
+        Consume not to be committed
+        until request status updated
+    end note
+
+    i1 - rc1
+    rc1 --> q1 : Puts response
+    q1 --> l1 : Consumes response
+}
+
+package TLreq as "Termination Layer Request (Spring Boot)" {
+    component l2 as "Queue listener / REST Client"
+    queue q2 as "Embedded Request Queue (Artemis)"
+    interface i2 as "request interface"
+    component rc2 as "REST controller"
+    
+
+    rc2 - i2
+    rc2 --> q2 : 1. Puts request
+    q2 --> l2 : Consumes request
+}
+
+package azure as "Azure Dabase PaaS" {
+    database db1 as "Termination Requests DB (Azure DB)"
+    database db2 as "Queue Persistence DB (Azure DB)"
+}
+
+rc2 -> db1 : 2. Store request
+db1 <- l1 : 2. Update request status
+
+
+package lz as "Landing Zone (Integration Platform)" {
+    component fogp as "FogP"
+    component dp as "DP"
+    component ibq as "Inbound Buffer"
+
+    fogp -> dp
+    dp -> ibq
+}
+
+ibq -> i2
+
+l1 --> fogp : 1. POST response
+
+cloud {
+    rectangle "Forsikring og Pension"
+}
+
+
+dp --> "Forsikring og Pension"
+"Forsikring og Pension" --> dp
+
+TLresp -[hidden]- azure
+azure -[hidden]- TLreq
+
+q1 <-> db2 : R/W
+q2 <-> db2 : R/W
+
+@enduml
