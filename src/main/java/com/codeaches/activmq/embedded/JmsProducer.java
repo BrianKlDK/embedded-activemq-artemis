@@ -14,8 +14,8 @@ public class JmsProducer {
   @Autowired
   private JmsTemplate jmsTemplate;
 
-  public void send(String message) {
-    jmsTemplate.convertAndSend(message);
+  public void send(String queue, String message) {
+    jmsTemplate.convertAndSend(queue, message);
     log.info("Sent message='{}'", message);
   }
 }
