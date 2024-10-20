@@ -15,5 +15,6 @@
             "username": "artemis",
             "database": "sys"
         }
-    ]
+    ],
+    "java.configuration.runtimes": []
 }

@@ -1,6 +1,9 @@
 CREATE DATABASE requests
     DEFAULT CHARACTER SET = 'utf8mb4';
 
+CREATE DATABASE artemis
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
 USE requests
 
 -- Active: 1729072828356@@172.17.0.2@3306@requests
@@ -21,3 +24,7 @@ CREATE TABLE responses (
 CREATE USER 'spring'@'%' IDENTIFIED BY 'boot';
 
 GRANT ALL PRIVILEGES ON *.* TO 'spring'@'%' WITH GRANT OPTION;
+
+CREATE USER 'artemis'@'%' IDENTIFIED BY 'artemis';
+
+GRANT ALL PRIVILEGES ON *.* TO 'artemis'@'%' WITH GRANT OPTION;
