@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {
     "id": 1,
-    "payload": "this is the response"
+    "payload": "this is the payload"
 }
 
 ###
