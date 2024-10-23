@@ -8,12 +8,13 @@
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-            "server": "172.17.0.3",
+            "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "MySQL",
-            "username": "artemis",
-            "database": "sys"
+            "name": "local mysql",
+            "database": "sys",
+            "username": "root",
+            "password": "mysql"
         }
     ],
     "java.configuration.runtimes": []

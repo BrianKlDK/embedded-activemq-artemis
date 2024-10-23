@@ -32,6 +32,9 @@ public class MyRestController {
     @Autowired
     private PortfolioRequestRepository portfolioRequestRepository;
 
+    @Autowired
+    private OutboundService outboundService;
+
     private ObjectMapper mapper = new ObjectMapper();
 
 
@@ -100,6 +103,7 @@ public class MyRestController {
     public @ResponseBody String devNullReceiveString(@RequestBody String requestBody) {
 
         log.info("Black hole recevied payload = '{}'", requestBody);
-        return "OK";
+        return outboundService.postOutBound(requestBody).toString();
+        
     }
 }

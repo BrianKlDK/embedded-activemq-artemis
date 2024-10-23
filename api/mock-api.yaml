@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info:
+  title: Dev Null API
+  version: 1.0.0
+paths:
+  /dev/null:
+    post:
+      summary: Accepts a JSON payload and returns 200
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                key: value
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "Success"
