@@ -19,9 +19,15 @@ public class JmsConsumer {
     }
 
     @JmsListener(destination = "outBound")
-    public Type receiveOutBound(String message) {
+    public void receiveOutBound(String message) throws Exception {
         log.info("Received message on outBound='{}'", message);
+        //MyRestResponse myRestResponserestResponse = new MyRestResponse();
         
-        return outboundService.postOutBound(message);
+        //return restResponse;
+        String result = outboundService.postOutBound(message).toString();
+
+        log.info("Result of outboundService='{}'", result);
+
+        throw new Exception("message not consumed");
     }    
 }
